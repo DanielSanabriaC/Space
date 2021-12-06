@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public Text restartText;
     public Text gameOverText;
-    private bool restart;
+    //private bool restart;
     private bool gameOver;
 
     private void Awake()
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        restart = false;
+       // restart = false;
         gameOver = false;
         gameOverText.gameObject.SetActive(false);
         restartText.gameObject.SetActive(false);
@@ -98,12 +98,9 @@ public class GameManager : MonoBehaviour
         if (gameOver)
         {
             restartText.gameObject.SetActive(true);
-            restart = true;
+          //  restart = true;
         }
-        if(restart && Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("Main");
-        }
+        
     }
     public void addScore(int value)
     {
@@ -159,7 +156,26 @@ public class GameManager : MonoBehaviour
                 invaderP.x += 4;
 
             }
+            invaderP.x = -6;
+            for (int x = 0; x < amountInvader; x++)
+            {
+                GameObject invaiderEnemy = invaiderEnemys[Random.Range(0, 3)];
+                Vector3 InvaiderPosition = new Vector3(invaderP.x, invaderP.y +2, invaderP.z);
+                Instantiate(invaiderEnemy, InvaiderPosition, Quaternion.identity);
+                invaderP.x += 4;
+
+            }
+            invaderP.x = -6;
+            for (int x = 0; x < amountInvader; x++)
+            {
+                GameObject invaiderEnemy = invaiderEnemys[Random.Range(0, 3)];
+                Vector3 InvaiderPosition = new Vector3(invaderP.x, invaderP.y +4, invaderP.z);
+                Instantiate(invaiderEnemy, InvaiderPosition, Quaternion.identity);
+                invaderP.x += 4;
+
+            }
         }
+
     }
 
    public  void updateScore()
