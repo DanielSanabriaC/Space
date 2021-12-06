@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public Text restartText;
     public Text gameOverText;
-    //private bool restart;
+    
     private bool gameOver;
 
     private void Awake()
@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         if (gameOver)
         {
             restartText.gameObject.SetActive(true);
-          //  restart = true;
+          
         }
         
     }
@@ -185,8 +185,17 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+
+        StartCoroutine(GameOverCoroutine());
+        
+    }
+
+    public IEnumerator GameOverCoroutine()
+    {
         gameOverText.gameObject.SetActive(true);
         gameOver = true;
+        
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene("GameOver");
     }
 }
