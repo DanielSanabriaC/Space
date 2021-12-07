@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        
         instance = this;
     }
 
@@ -97,7 +98,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver)
         {
-            restartText.gameObject.SetActive(true);
+          //  restartText.gameObject.SetActive(true);
           
         }
         

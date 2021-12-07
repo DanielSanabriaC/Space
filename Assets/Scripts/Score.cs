@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    public Text scoret;
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
