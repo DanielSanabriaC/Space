@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public Text restartText;
     public Text gameOverText;
     
-    private bool gameOver;
+    public bool gameOver;
 
     private void Awake()
     {
@@ -194,8 +194,9 @@ public class GameManager : MonoBehaviour
     {
         gameOverText.gameObject.SetActive(true);
         gameOver = true;
+       
         
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("GameOver");
     }
 }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
+
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
 
-    
 
-    private CharacterController charController;
+    public CharacterController charController;
     private Vector2 move = Vector2.zero;
     
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -41,7 +43,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if (!GameManager.instance.gameOver)
+        {
+
 
             move = new Vector2(CrossPlatformInputManager.GetAxis("Horizontal"), 0);
 
@@ -54,7 +58,7 @@ public class PlayerController : MonoBehaviour
                 audioSource.Play();
             }
 
-        
+        }
 
     }
 }
